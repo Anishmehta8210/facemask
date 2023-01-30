@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container-fluid" style="background-color: rgb(42, 42, 43);">
+    <div class="container-fluid"
+        style=" background-image: url(https://png2.cleanpng.com/sh/a4759a77c12a681005a90d7efc74d73b/L0KzQYm3VsA1N5xojpH0aYP2gLBuTf5mfKh0it02ZXbpdbT7TfNwdaF6jNd7LX7ohMj2kvsucZ95feR3ZYSwf8Pugf5qgpJ5RdDudIfygry0gf5idKpBfeQ2NXK0RbKBVcRkPGU5SaU3MUS0Roe5VMkyPWM9SaYBMEC3SIG6Wb5xdpg=/kisspng-network-effect-computer-network-internet-organizat-network-analyzer-5b15a854c44413.1416624915281460048039.png); height: fit-content;  background-position: center; background-repeat: no-repeat; background-size: cover;">
+        <div class="container">
+            <div class="row">
+                <div class="col-7 ">
+                    <h1 class="text-light " style="font-weight: 800; font-size: 50px; padding: 90px 40px;"> Welcome
+                        in FaceMask</h1>
+                    <h2 class="text-light display-9" style="margin: -90px 40px;">Connecting Together</h2>
+                </div>
+                <div class="col-5 mx-auto py-5 ">
+                    <div class="card " style="background-color: azure;">
+                        <div class="card-body">
+                            <h6 class="h1">Create An Account</h6>
+                            <form action=" {% url 'register' %}" method="POST">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-floating mb-3">
+                                            <input type="text" placeholder="Enter First Name" class="form-control" name="fname">
+                                            <label for="">First Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-floating mb-3">
+                                            <input type="text" placeholder="Enter Last Name" class="form-control" name="lname">
+                                            <label for="">Last Name</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input type="text" placeholder="Enter UserName" class="form-control" name="username">
+                                    <label for="">Username</label>
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input type="text" placeholder="Enter email" class="form-control" name="email">
+                                    <label for="">email</label>
+                                </div>
+
+                               
+                                <div class="form-floating mb-3">
+                                    <input type="text" placeholder="Enter Contact" class="form-control" name="contact">
+                                    <label for="">Contact</label>
+                                </div>
+
+                                <div class="mb-3 ">
+                                    <label for="" class="text-muted">Date Of Birth</label>
+                                    <input type="Date" class="form-control" name="dob">
+                                </div>
+
+                               <div class="mb-3">
+                                <select class="form-select" name="gender">
+                                    <option selected>Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Others</option>
+                                </select>
+                               </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-6">
+                                        <div class="form-floating mb-3">
+                                            <input type="password" placeholder="Enter Password" class="form-control" name="password">
+                                            <label for="">Password</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-floating mb-3">
+                                            <input type="password" placeholder="Enter Password" class="form-control" name="rpassword">
+                                            <label for="">Confirm Password</label>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <input type="submit" name="submit" name="Create An Account" value="Create An Account " class="btn btn-success w-100">
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock  %}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #1877f2;">
+        <div class="container">
+            <a href="" class="navbar-brand"><b>FaceMask</b></a>
+
+            <form action="" method="get">
+                <input type="text" class="border px-3 py-2 outline-0 focus:outline-none rounded -1-md" size="70">
+                <input type="submit" class="bg-blue-800 hover-bg-blue text-white px-3 py-1 rounded-r-md">
+            </form>
+
+
+            <div class="flex gap-2">
+                <a href="" class="text-white hover:text-slate-200">home</a>
+                <a href="" class="text-white hover:text-slate-200">{{user.username}}</a>
+                <a href="" class="text-white hover:text-slate-200">settings</a>
+                <a href="" class="text-white hover:text-slate-200">logout</a>
+            </div>
+           
+
+           
+        </div>
+    </nav>
+
+    <div class="flex gap-5 p-5">
+        <div class="w-3/12">
+            <div class="bg-white border border-slate-300 w-full h-96">
+                <div class="flex flex-col">
+                    <div class="border bg-white w-full h-auto rounded-lg border border-slate-300">
+                        <div class="bg-[url('https://social.webestica.com/assets/images/bg/01.jpg')] h-32 w-full bg-cover bg-center"></div>
+                        <div class="flex justify-start items-start px-3 gap-2">
+                            <div class="w-48 ml-16 mx-auto mt-5">
+                                <img src="https://scontent.fdbd1-1.fna.fbcdn.net/v/t39.30808-6/320667494_839790580618045_1147730292500808955_n.jpg?stp=dst-jpg_p640x640&_nc_cat=104&ccb=1-7&_nc_sid=e3f864&_nc_ohc=nsIca5UnkrEAX9G9N54&_nc_ht=scontent.fdbd1-1.fna&oh=00_AfCh0U_qXsNbCeTfZpRfH44LB89yH-gYwoA1X3app-scbA&oe=63DD38FF"  class="w-full  border-2 rounded-lg border-white -mt-24" style="border-radius: 50%; height: 120px;" alt="" >
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <h1>this is profile {{user.username}}</h1>
+
+    
+    
+</body>
+</html>
+
