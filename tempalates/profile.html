@@ -24,7 +24,7 @@
                 <a href="" class="text-white hover:text-slate-200">home</a>
                 <a href="" class="text-white hover:text-slate-200">{{user.username}}</a>
                 <a href="" class="text-white hover:text-slate-200">settings</a>
-                <a href="" class="text-white hover:text-slate-200">logout</a>
+                <a href="{% url 'logout' %}" class="text-white hover:text-slate-200">Logout</a>
             </div>
            
 
@@ -41,9 +41,19 @@
                         <div class="flex justify-start items-start px-3 gap-2">
                             <div class="w-48 ml-16 mx-auto mt-5">
                                 <img src="https://scontent.fdbd1-1.fna.fbcdn.net/v/t39.30808-6/320667494_839790580618045_1147730292500808955_n.jpg?stp=dst-jpg_p640x640&_nc_cat=104&ccb=1-7&_nc_sid=e3f864&_nc_ohc=nsIca5UnkrEAX9G9N54&_nc_ht=scontent.fdbd1-1.fna&oh=00_AfCh0U_qXsNbCeTfZpRfH44LB89yH-gYwoA1X3app-scbA&oe=63DD38FF"  class="w-full  border-2 rounded-lg border-white -mt-24" style="border-radius: 50%; height: 120px;" alt="" >
+                                <form action="{url 'uploadDp'}" method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <label for="upload" class="bg-green-600 text-white px-2 py-1 mt-3 rounded">
+                                        <input type="file" name="dp" id="upload"  onchange="this.form.submit();">
+                                        <span>upload to</span>
+                                    </label>
+                                </form>
                             </div>
+                           
+    
                         </div>
 
+                       
                     </div>
 
 

@@ -1,7 +1,9 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from .models import *
-from django.contrib.auth import authenticate,login as LoginFunction
+from django.contrib.auth import authenticate,login as LoginFunction,logout as LogoutFunction
+from django.contrib.auth.decorators import login_required
+# from django
 
 # Create your views here.
 
@@ -50,7 +52,7 @@ def register(r):
         LoginFunction(r,u)
         return redirect (profile)
 
-
+@login_required
 def profile(r):
     data={}
     data['posts'] = Post.objects.order_by("-id")
@@ -58,7 +60,8 @@ def profile(r):
     return render(r,"profile.html",data)
 
 def logout(r):
-    pass
+    LogoutFunction(r)
+    return redirect(home)
 
 def insert_post(r):
     if r.method == "POST":
@@ -68,3 +71,14 @@ def insert_post(r):
         p.caption = r.POST.get('caption')
         p.save()
         return redirect (profile)
+    
+
+
+# def uploadDp(r):
+#     if r.method == "POST":
+#         user = User.objects.get(pk=r.user.id)
+#         file  = r.FILES['dp']
+#         fs = FileSystemStorage()
+#         file
+#         user.save()
+#         return redirect(profile)
