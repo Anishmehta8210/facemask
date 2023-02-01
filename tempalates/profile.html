@@ -50,8 +50,40 @@
                 </div>
             </div>
         </div>
+        <div class="w-7/12">
+
+            <div class="bg-white border border-slate-300 w-full h-auto rounded-lg">
+                <form action="{%url 'insertPost'%}" method="post" class="flex flex-col">
+
+                    {% csrf_token %}
+                    <textarea name="caption" id="" cols="30" rows="7" placeholder=" write what's on your mind" class="border border-slate-300"></textarea>
+                    <input type="submit" value="send" class="bg-blue-600 text-white w-24 px-3 py-2 rounded hover:bg-blue-800 text-center ml-auto   ">
+                </form>
+            </div>
+
+            {% for post in posts %}
+            <div class="bg-white mt-4 border-slate-300 w-full h-auto">
+                
+                <div class="flex justify-start gap-3 px-4 item-center">
+                    <img src="https://picsum.photo/50/50" class="w-36 h-36 rounded-full" alt="">
+                    <div class="flex flex-col">
+                        <h2 class="font-semibold capitalize">{{post.post_by.first_name}}  {{post.post_by.last_name}}</h2>
+                        <p class="text-slate-500 text-xs">{{post.date_of_creation}}</p>
+                    </div>
+                </div>
+
+                <div class="flex mt-5">
+                    <p class="text-semibold text-lg">{{post.caption}}</p>
+                </div>
+                
+            </div>
+
+            {% endfor %}
+
+        </div>
+
     </div>
-    <h1>this is profile {{user.username}}</h1>
+    
 
     
     
