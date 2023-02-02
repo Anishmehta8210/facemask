@@ -1,102 +1,103 @@
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>Facemask - connecting People</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <title>Document</title>
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #1877f2;">
-        <div class="container">
-            <a href="" class="navbar-brand"><b>FaceMask</b></a>
+<body class="bg-gray-100">
 
-            <form action="" method="get">
-                <input type="text" class="border px-3 py-2 outline-0 focus:outline-none rounded -1-md" size="70">
-                <input type="submit" class="bg-blue-800 hover-bg-blue text-white px-3 py-1 rounded-r-md">
-            </form>
+    <!-- navbar -->
+    <nav class=" py-2 px-5 flex flex-1 justify-between items-center" style="background-color: #09111b;;">
+        <h1 class="text-white font-bold">FaceMask</h1>
 
+        <form action="" method="get" class="flex gap-0">
+            <input type="text" class="border px-3 py-1 outline-0 focus:outline-none rounded-l-md" size="70">
+            <input type="submit" class="bg-blue-800 hover:bg-blue-900 text-white px-3 py-1 rounded-r-md">
+        </form>
 
-            <div class="flex gap-2">
-                <a href="" class="text-white hover:text-slate-200">home</a>
-                <a href="" class="text-white hover:text-slate-200">{{user.username}}</a>
-                <a href="" class="text-white hover:text-slate-200">settings</a>
-                <a href="{% url 'logout' %}" class="text-white hover:text-slate-200">Logout</a>
-            </div>
-           
-
-           
+        <div class="flex gap-2 capitalize">
+            <a href="" class="text-white hover:text-slate-200">Home</a>
+            <a href="" class="text-white hover:text-slate-200">{{ user.first_name }}</a>
+            <a href="" class="text-white hover:text-slate-200">Setting</a>
+            <a href="{% url 'logout' %}" class="text-white hover:text-slate-200">logout</a>
         </div>
+       
     </nav>
 
-    <div class="flex gap-5 p-5">
+    <div class="flex gap-5 py-5 px-36">
         <div class="w-3/12">
             <div class="bg-white border border-slate-300 w-full h-96">
                 <div class="flex flex-col">
-                    <div class="border bg-white w-full h-auto rounded-lg border border-slate-300">
-                        <div class="bg-[url('https://social.webestica.com/assets/images/bg/01.jpg')] h-32 w-full bg-cover bg-center"></div>
-                        <div class="flex justify-start items-start px-3 gap-2">
-                            <div class="w-48 ml-16 mx-auto mt-5">
-                                <img src="https://scontent.fdbd1-1.fna.fbcdn.net/v/t39.30808-6/320667494_839790580618045_1147730292500808955_n.jpg?stp=dst-jpg_p640x640&_nc_cat=104&ccb=1-7&_nc_sid=e3f864&_nc_ohc=nsIca5UnkrEAX9G9N54&_nc_ht=scontent.fdbd1-1.fna&oh=00_AfCh0U_qXsNbCeTfZpRfH44LB89yH-gYwoA1X3app-scbA&oe=63DD38FF"  class="w-full  border-2 rounded-lg border-white -mt-24" style="border-radius: 50%; height: 120px;" alt="" >
-                                <form action="{url 'uploadDp'}" method="post" enctype="multipart/form-data">
-                                    {% csrf_token %}
-                                    <label for="upload" class="bg-green-600 text-white px-2 py-1 mt-3 rounded">
-                                        <input type="file" name="dp" id="upload"  onchange="this.form.submit();">
-                                        <span>upload to</span>
-                                    </label>
-                                </form>
-                            </div>
-                           
-    
+                    <div class="border bg-[url('https://picsum.photos/600')] w-full h-24"></div>
+                    <div class="flex flex-col gap-2 justify-center items-center">
+                        <div class="w-1/4 mx-auto bg-slate-500 rounded-lg -mt-12 h-auto border-4 border-white">
+                            {% if user.account.dp %}
+                            <img src="{{user.account.dp.url}}" alt="">
+
+                            {% else %}
+
+                            <img src="https://scontent.fpat2-4.fna.fbcdn.net/v/t39.30808-6/323770191_1798717020507352_8996767816692752425_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=730e14&_nc_ohc=Z-wC9GG3mYUAX-_2RIo&_nc_ht=scontent.fpat2-4.fna&oh=00_AfDKyQTqUtiPzhp4MIPWaH_89Ni-1GozaA_IbBk-FcEy1Q&oe=63E0736C" alt="">
+                            {% endif %}
                         </div>
+                        <h2 class="font-bold text-slate-600 capitalize text-2xl ">{{ user.first_name }} {{ user.last_name }}</h2>
 
-                       
+                        <form action="{% url 'uploadDp' %}" method="post" enctype="multipart/form-data">
+                            {%csrf_token %}
+                            <label for="upload" class="bg-green-600 text-white px-2 py-1 mt-3 rounded">
+                                <input type="file" name="dp" id="upload" class="hidden" onchange="this.form.submit();">
+                                <span>Upload Dp</span>
+                            </label>
+
+                        </form>
                     </div>
-
-
                 </div>
             </div>
         </div>
         <div class="w-7/12">
-
+            <!-- post insertion work -->
             <div class="bg-white border border-slate-300 w-full h-auto rounded-lg">
-                <form action="{%url 'insertPost'%}" method="post" class="flex flex-col">
-
+                <form action="{% url 'insertPost' %}" method="post" class="flex flex-col" enctype="multipart/form-data">
                     {% csrf_token %}
-                    <textarea name="caption" id="" cols="30" rows="7" placeholder=" write what's on your mind" class="border border-slate-300"></textarea>
-                    <input type="submit" value="send" class="bg-blue-600 text-white w-24 px-3 py-2 rounded hover:bg-blue-800 text-center ml-auto   ">
+                    <textarea name="caption" id="" cols="30" rows="6" class="border focus:outline-none p-3" placeholder="Write what's in your mind?"></textarea>
+                    <div class="flex items-center pl-10 justify-center">
+                        <label for="postImage" class="p-2 bg-green-600 rounded w-24 text-xs text-white">
+                            <input type="file" hidden name="postImage" id="postImage">
+                            <span>Upload</span>
+                        </label>
+                        <input type="submit" value="Send" class="bg-blue-600 cursor-pointer  text-white w-24 px-3 py-2 rounded hover:bg-blue-800 text-center ml-auto m-3">
+                    </div>
                 </form>
             </div>
 
+            <!-- post calling work -->
             {% for post in posts %}
-            <div class="bg-white mt-4 border-slate-300 w-full h-auto">
-                
-                <div class="flex justify-start gap-3 px-4 item-center">
-                    <img src="https://picsum.photo/50/50" class="w-36 h-36 rounded-full" alt="">
-                    <div class="flex flex-col">
-                        <h2 class="font-semibold capitalize">{{post.post_by.first_name}}  {{post.post_by.last_name}}</h2>
-                        <p class="text-slate-500 text-xs">{{post.date_of_creation}}</p>
+                <div class="bg-white mt-4 border-slate-300 w-full h-auto p-4">
+                    <div class="flex justify-start gap-3 px-4 items-center">
+                        <img src="https://picsum.photos/50" class="w-12 h-12 rounded-full" alt="">
+                        <div class="flex flex-col">
+                            <h2 class="font-semibold capitalize">{{ post.post_by.first_name }} {{ post.post_by.last_name }}</h2>
+                            <p class="text-slate-500 text-xs">{{ post.date_of_creation }}</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col mt-5">
+                        <p class="text-lg">{{ post.caption }}</p>
+
+                        {% if post.image %}
+                        <img src="{{post.image.url}}" alt="">
+                        {% endif %}
                     </div>
                 </div>
-
-                <div class="flex mt-5">
-                    <p class="text-semibold text-lg">{{post.caption}}</p>
-                </div>
-                
-            </div>
-
             {% endfor %}
 
         </div>
-
+        <div class="w-2/12">
+            <div class="bg-white border border-slate-300 w-full h-96"></div>
+        </div>
     </div>
-    
-
-    
-    
 </body>
 </html>
-

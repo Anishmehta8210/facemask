@@ -1,94 +1,94 @@
-{% extends 'base.html' %}
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facemask - connecting People</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+       
 
-{% block content %}
+    
+</head>
+<body>
 
+    <!-- navbar -->
+    <nav class=" py-2 px-5 flex flex-1 justify-between items-center" style="background-color: #09111b;;">
+        <h1 class="text-white font-bold">FaceMask</h1>
 
-<div class="container-fluid" style="background-color: rgb(42, 42, 43);">
-    <div class="container-fluid"
-        style=" background-image: url(https://png2.cleanpng.com/sh/a4759a77c12a681005a90d7efc74d73b/L0KzQYm3VsA1N5xojpH0aYP2gLBuTf5mfKh0it02ZXbpdbT7TfNwdaF6jNd7LX7ohMj2kvsucZ95feR3ZYSwf8Pugf5qgpJ5RdDudIfygry0gf5idKpBfeQ2NXK0RbKBVcRkPGU5SaU3MUS0Roe5VMkyPWM9SaYBMEC3SIG6Wb5xdpg=/kisspng-network-effect-computer-network-internet-organizat-network-analyzer-5b15a854c44413.1416624915281460048039.png); height: fit-content;  background-position: center; background-repeat: no-repeat; background-size: cover;">
-        <div class="container">
-            <div class="row">
-                <div class="col-7 ">
-                    <h1 class="text-light " style="font-weight: 800; font-size: 50px; padding: 90px 40px;"> Welcome
-                        in FaceMask</h1>
-                    <h2 class="text-light display-9" style="margin: -90px 40px;">Connecting Together</h2>
-                </div>
-                <div class="col-5 mx-auto py-5 ">
-                    <div class="card " style="background-color: azure;">
-                        <div class="card-body">
-                            <h6 class="h1">Create An Account</h6>
-                            <form action=" {% url 'register' %}" method="POST">
-                                {% csrf_token %}
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="form-floating mb-3">
-                                            <input type="text" placeholder="Enter First Name" class="form-control" name="fname">
-                                            <label for="">First Name</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-floating mb-3">
-                                            <input type="text" placeholder="Enter Last Name" class="form-control" name="lname">
-                                            <label for="">Last Name</label>
-                                        </div>
-                                    </div>
-                                </div>
+        <form action="{%url 'login'%}" method="post" class="flex justify-center items-center gap-2">
+            {% csrf_token %}
+            <input type="text" name="email" placeholder="Enter username or Mobile" class="border border-slate-500 px-3 py-2 rounded">
+            <input type="password" name="password" placeholder="Enter password" class="border border-slate-500 px-3 py-2 rounded">
+            <input type="submit" class="bg-blue-800 hover:bg-blue-900 text-white px-3 py-2">
+        </form>
+    </nav>
 
-                                <div class="form-floating mb-3">
-                                    <input type="text" placeholder="Enter UserName" class="form-control" name="username">
-                                    <label for="">Username</label>
-                                </div>
-
-                                <div class="form-floating mb-3">
-                                    <input type="text" placeholder="Enter email" class="form-control" name="email">
-                                    <label for="">email</label>
-                                </div>
-
-                               
-                                <div class="form-floating mb-3">
-                                    <input type="text" placeholder="Enter Contact" class="form-control" name="contact">
-                                    <label for="">Contact</label>
-                                </div>
-
-                                <div class="mb-3 ">
-                                    <label for="" class="text-muted">Date Of Birth</label>
-                                    <input type="Date" class="form-control" name="dob">
-                                </div>
-
-                               <div class="mb-3">
-                                <select class="form-select" name="gender">
-                                    <option selected>Select Gender</option>
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                    <option value="other">Others</option>
-                                </select>
-                               </div>
-
-                                <div class="row mb-3">
-                                    <div class="col-6">
-                                        <div class="form-floating mb-3">
-                                            <input type="password" placeholder="Enter Password" class="form-control" name="password">
-                                            <label for="">Password</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-floating mb-3">
-                                            <input type="password" placeholder="Enter Password" class="form-control" name="rpassword">
-                                            <label for="">Confirm Password</label>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <input type="submit" name="submit" name="Create An Account" value="Create An Account " class="btn btn-success w-100">
-                            </form>
+    <div class=" flex justify-between gap-10 p-10 h-[96vh] items-center bg-cover" style="background-color: #09111b;">
+        
+        <div class="w-8/12">
+            <div class=" design  ">
+                <h1 class="text-6xl font-semibold ">Welcome in FaceMask</h1>
+                
+            </div>
+        </div>
+        <div class="w-4/12">
+            <div class="bg-white p-10">
+                <form action="{% url 'register' %}" method="post" class="flex flex-col gap-3"> 
+                    {%csrf_token%}
+                    <div class="flex gap-2">
+                        <div class="flex-1">
+                            <input type="text" name="fname" class="border border-slate-400 rounded p-2 w-full" placeholder="First Name">
+                        </div>
+                        <div class="flex-1">
+                            <input type="text" name="lname" class="border border-slate-400 rounded p-2 w-full" placeholder="last Name">
                         </div>
                     </div>
-
-                </div>
+                    <div class="flex">
+                        <div class="flex-1">
+                            <input type="text" name="username" class="border border-slate-400 rounded p-2 w-full" placeholder="Username">
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <div class="flex-1">
+                            <input type="text" name="email" class="border border-slate-400 rounded p-2 w-full" placeholder="Email Address">
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <div class="flex-1">  
+                            <input type="text" name="contact" class="border border-slate-400 rounded p-2 w-full" placeholder="Contact no">
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <div class="flex-1">
+                            <input type="date"  name="dob" class="border border-slate-400 rounded p-2 w-full">
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <div class="flex-1">
+                            <select name="gender"  class="border border-slate-400 rounded p-2 w-full">
+                                <option value="" selected disabled>select Gender</option>
+                                <option value="m">Male</option>
+                                <option value="f">Female</option>
+                                <option value="o">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <div class="flex-1">
+                            <input type="password" name="password" class="border border-slate-400 rounded p-2 w-full" placeholder="New Password">
+                        </div>
+                        <div class="flex-1">
+                            <input type="password" name="cnf_password" class="border border-slate-400 rounded p-2 w-full" placeholder="Confirm Password">
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <input type="submit" class="bg-green-700 text-white px-3 py-2 w-full rounded-lg shadow-md" value="Create an account">
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-
-</div>
-{% endblock  %}
+</body>
+</html>
