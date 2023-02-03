@@ -70,11 +70,13 @@ def insert_post(r):
         user = User.objects.get(pk=r.user.id)
         p.post_by = user 
         p.caption = r.POST.get('caption')
-        file = r.FILES['postImage']
-        fs = FileSystemStorage()
-        filename = fs.save(file.name,file)
-        upload_file_url = fs.url(filename)
-        p.image = filename
+        if r.FILES:
+            file = r.FILES['postImage']
+            fs = FileSystemStorage()
+            filename = fs.save(file.name,file)
+            upload_file_url = fs.url(filename)
+            p.image = filename
+        
         p.save()
         return redirect(profile)
 

@@ -7,6 +7,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Facemask - connecting People</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+:Root {
+--Var-Color: Rgb(0, 238, 255);
+}
+.Container H1 {
+    Font-Family: "Nunito";
+    margin-top: -200px;
+    margin-left: 60px;
+Font-Size: 3.7rem;
+Color: Var(--Var-Color);
+Position: Relative;
+}
+.Container H1::Before {
+Position: Absolute;
+Content: Attr(Data-Text);
+Text-Shadow: 0px 0px 20px Var(--Var-Color);
+Filter: Blur(10px) Brightness(0);
+Animation: Flicker 2s Linear Forwards;
+Animation-Delay: 1s;
+}
+  @keyframes Flicker {
+0% {
+Filter: Blur(5px) Brightness(1);
+}
+3% {
+Filter: Blur(5px) Brightness(0);
+}
+6% {
+Filter: Blur(5px) Brightness(0);
+}
+7% {
+Filter: Blur(5px) Brightness(1);
+}
+8% {
+Filter: Blur(5px) Brightness(0);
+}
+9% {
+Filter: Blur(5px) Brightness(1);
+}
+10% {
+Filter: Blur(5px) Brightness(0);
+}
+20% {
+Filter: Blur(5px) Brightness(1);
+}
+50% {
+Filter: Blur(5px) Brightness(1);
+}
+99% {
+Filter: Blur(5px) Brightness(0);
+}
+100% {
+Filter: Blur(5px) Brightness(1);
+}
+}
+    </style>
        
 
     
@@ -15,7 +71,7 @@
 
     <!-- navbar -->
     <nav class=" py-2 px-5 flex flex-1 justify-between items-center" style="background-color: #09111b;;">
-        <h1 class="text-white font-bold">FaceMask</h1>
+        <h1  style="font-size: 1.7rem;font-family: Nunito;margin-left: 5%;color: Rgb(0, 238, 255);">FaceMask</h1>
 
         <form action="{%url 'login'%}" method="post" class="flex justify-center items-center gap-2">
             {% csrf_token %}
@@ -28,15 +84,14 @@
     <div class=" flex justify-between gap-10 p-10 h-[96vh] items-center bg-cover" style="background-color: #09111b;">
         
         <div class="w-8/12">
-            <div class=" design  ">
-                <h1 class="text-6xl font-semibold ">Welcome in FaceMask</h1>
-                
-            </div>
+            <Div Class="Container">
+                <H1 Data-Text="Welcome in FaceMask">Welcome in FaceMask</H1>
+            </Div>
         </div>
         <div class="w-4/12">
-            <div class="bg-white p-10">
+            <div class="bg-white p-10" style="border-radius: 10px 100px / 120px;">
                 <form action="{% url 'register' %}" method="post" class="flex flex-col gap-3"> 
-                    {%csrf_token%}
+                    {% csrf_token %}
                     <div class="flex gap-2">
                         <div class="flex-1">
                             <input type="text" name="fname" class="border border-slate-400 rounded p-2 w-full" placeholder="First Name">
